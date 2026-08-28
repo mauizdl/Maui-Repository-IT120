@@ -1,0 +1,585 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Sun Son Solar</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+ :root{
+   --navy: #0E2237;
+   --navy-deep: #081726;
+   --gold: #E9A23B;
+   --gold-soft: #F3C077;
+   --teal: #3E8E82;
+   --paper: #FBF9F4;
+   --ink: #16283C;
+   --slate: #64758A;
+   --line: #E4E1D6;
+ }
+
+ * {
+   box-sizing: border-box;
+ }
+
+ body{
+   margin:0;
+   min-height:100vh;
+   background: var(--navy-deep);
+   font-family: 'Inter', sans-serif;
+   color: var(--ink);
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   padding:40px 20px;
+ }
+
+ .page{
+   width:100%;
+   max-width:420px;
+ }
+
+ .hero{
+   position:relative;
+   height:150px;
+   border-radius:22px 22px 0 0;
+   overflow:hidden;
+   background:
+     radial-gradient(
+       120px 120px at 78% 15%,
+       rgba(243,192,119,0.9),
+       rgba(233,162,59,0.35) 55%,
+       transparent 70%
+     ),
+     linear-gradient(
+       180deg,
+       #142E48 0%,
+       #0E2237 55%,
+       #0A1B2C 100%
+     );
+ }
+
+ .panels{
+   position:absolute;
+   left:-10%;
+   right:-10%;
+   bottom:-38px;
+   height:120px;
+   transform:perspective(260px) rotateX(48deg);
+   transform-origin:bottom;
+
+   background-image:
+     linear-gradient(
+       90deg,
+       rgba(233,162,59,0.28) 1px,
+       transparent 1px
+     ),
+     linear-gradient(
+       0deg,
+       rgba(233,162,59,0.28) 1px,
+       transparent 1px
+     );
+
+   background-size:34px 22px;
+   background-color:rgba(20,46,72,0.55);
+   border-top:1px solid rgba(233,162,59,0.4);
+ }
+
+ .horizon-glow{
+   position:absolute;
+   left:0;
+   right:0;
+   bottom:34px;
+   height:1px;
+   background:
+     linear-gradient(
+       90deg,
+       transparent,
+       rgba(243,192,119,0.7),
+       transparent
+     );
+ }
+
+ .card{
+   background:var(--paper);
+   border-radius:0 0 22px 22px;
+   padding:25px 30px 26px;
+   box-shadow:0 30px 60px -20px rgba(0,0,0,0.55);
+ }
+
+
+ .logo-container{
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   margin-bottom:8px;
+ }
+
+ .logo{
+   display:block;
+   width:170px;
+   height:auto;
+   max-height:90px;
+   object-fit:contain;
+ }
+
+ h1{
+   font-family:'Space Grotesk', sans-serif;
+   font-size:24px;
+   font-weight:600;
+   letter-spacing:-0.01em;
+   color:var(--navy);
+   margin:0 0 4px;
+   text-align:center;
+ }
+
+ .subtitle{
+   text-align:center;
+   font-size:13px;
+   color:var(--slate);
+   margin:0 0 24px;
+ }
+
+ form{
+   display:flex;
+   flex-direction:column;
+   gap:12px;
+ }
+
+ .field{
+   position:relative;
+ }
+
+ .field input{
+   width:100%;
+   padding:13px 40px 13px 14px;
+   border:1px solid var(--line);
+   border-radius:10px;
+   background:#fff;
+   font-family:'Inter', sans-serif;
+   font-size:14px;
+   color:var(--ink);
+   outline:none;
+
+   transition:
+     border-color .15s ease,
+     box-shadow .15s ease;
+ }
+
+ .field input::placeholder{
+   color:#9AA5B1;
+ }
+
+ .field input:focus{
+   border-color:var(--gold);
+   box-shadow:0 0 0 3px rgba(233,162,59,0.18);
+ }
+
+ .field .icon{
+   position:absolute;
+   right:14px;
+   top:50%;
+   transform:translateY(-50%);
+   color:#9AA5B1;
+   pointer-events:none;
+   display:flex;
+ }
+
+ .field .icon.toggle{
+   pointer-events:auto;
+   cursor:pointer;
+   background:none;
+   border:none;
+   padding:0;
+ }
+
+ .field .icon svg{
+   width:17px;
+   height:17px;
+ }
+
+ .checks{
+   display:flex;
+   flex-direction:column;
+   gap:10px;
+   margin:14px 2px 22px;
+ }
+
+ .check{
+   display:flex;
+   align-items:center;
+   gap:9px;
+   font-size:13px;
+   color:var(--slate);
+ }
+
+ .check input[type="checkbox"]{
+   appearance:none;
+   width:16px;
+   height:16px;
+   border:1.5px solid #C9CEDB;
+   border-radius:5px;
+   display:grid;
+   place-content:center;
+   margin:0;
+   cursor:pointer;
+   flex-shrink:0;
+ }
+
+ .check input[type="checkbox"]::after{
+   content:"";
+   width:9px;
+   height:9px;
+   border-radius:2px;
+   transform:scale(0);
+   transition:transform .12s ease;
+   background:var(--gold);
+ }
+
+ .check input[type="checkbox"]:checked{
+   border-color:var(--gold);
+ }
+
+ .check input[type="checkbox"]:checked::after{
+   transform:scale(1);
+ }
+
+ .check a{
+   color:var(--teal);
+   font-weight:600;
+   text-decoration:none;
+ }
+
+ .check a:hover{
+   text-decoration:underline;
+ }
+
+ .submit{
+   width:100%;
+   padding:14px;
+   border:none;
+   border-radius:10px;
+
+   background:
+     linear-gradient(
+       135deg,
+       var(--gold-soft),
+       var(--gold)
+     );
+
+   color:var(--navy-deep);
+
+   font-family:'Space Grotesk', sans-serif;
+   font-weight:600;
+   font-size:15px;
+
+   cursor:pointer;
+
+   box-shadow:
+     0 8px 20px -8px rgba(233,162,59,0.7);
+
+   transition:
+     transform .12s ease,
+     box-shadow .12s ease;
+ }
+
+ .submit:hover{
+   transform:translateY(-1px);
+
+   box-shadow:
+     0 12px 24px -8px rgba(233,162,59,0.8);
+ }
+
+ .submit:active{
+   transform:translateY(0);
+ }
+
+
+ .footer-link{
+   text-align:center;
+   font-size:13px;
+   color:var(--slate);
+   margin-top:18px;
+ }
+
+ .footer-link a{
+   color:var(--navy);
+   font-weight:600;
+   text-decoration:none;
+ }
+
+ .footer-link a:hover{
+   text-decoration:underline;
+ }
+
+
+ @media (prefers-reduced-motion:no-preference){
+
+   .card{
+     animation:rise .5s ease both;
+   }
+
+   @keyframes rise{
+     from{
+       opacity:0;
+       transform:translateY(10px);
+     }
+
+     to{
+       opacity:1;
+       transform:translateY(0);
+     }
+   }
+ }
+
+ input:focus-visible,
+ button:focus-visible,
+ a:focus-visible{
+   outline:2px solid var(--teal);
+   outline-offset:2px;
+ }
+
+ @media(max-width:480px){
+
+   body{
+     padding:25px 15px;
+   }
+
+   .card{
+     padding:22px 22px 24px;
+   }
+
+   .logo{
+     width:150px;
+   }
+
+   .hero{
+     height:135px;
+   }
+ }
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+
+  <div class="hero">
+    <div class="horizon-glow"></div>
+    <div class="panels"></div>
+  </div>
+
+
+  <div class="card">
+
+
+    <div class="logo-container">
+      <img
+        src="images/sun-son-solar-logo.png"
+        alt="Sun Son Solar Logo"
+        class="logo"
+      >
+    </div>
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">
+      Join Sun Son Solar and start tracking your energy
+    </p>
+
+    <form>
+
+
+      <div class="field">
+        <input
+          type="text"
+          placeholder="Full Name"
+          required
+        >
+      </div>
+
+
+      <div class="field">
+        <input
+          type="email"
+          placeholder="Email"
+          required
+        >
+      </div>
+
+
+      <div class="field">
+        <input
+          type="tel"
+          placeholder="Phone Number"
+          required
+        >
+      </div>
+
+ 
+      <div class="field">
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        >
+
+        <span class="icon">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect
+              x="5"
+              y="11"
+              width="14"
+              height="10"
+              rx="2"
+            ></rect>
+
+            <path
+              d="M8 11V7a4 4 0 0 1 8 0v4"
+            ></path>
+          </svg>
+
+        </span>
+
+      </div>
+
+    
+      <div class="field">
+
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        >
+
+        <button
+          type="button"
+          class="icon toggle"
+          id="toggleConfirm"
+          aria-label="Show password"
+        >
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.8 21.8 0 0 1 5.06-6.06"
+            ></path>
+
+            <path
+              d="M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a21.8 21.8 0 0 1-2.16 3.19"
+            ></path>
+
+            <path
+              d="M14.12 14.12a3 3 0 1 1-4.24-4.24"
+            ></path>
+
+            <line
+              x1="1"
+              y1="1"
+              x2="23"
+              y2="23"
+            ></line>
+          </svg>
+
+        </button>
+
+      </div>
+
+
+      <div class="checks">
+
+        <label class="check">
+
+          <input
+            type="checkbox"
+            required
+          >
+
+          <span>
+            I agree to
+            <a href="#">Terms &amp; Conditions</a>
+          </span>
+
+        </label>
+
+        <label class="check">
+
+          <input type="checkbox">
+
+          <span>Newsletter</span>
+
+        </label>
+
+      </div>
+
+      <button
+        type="submit"
+        class="submit"
+      >
+        Create Account
+      </button>
+
+    </form>
+    <p class="footer-link">
+      Already have an account?
+      <a href="#">Sign in</a>
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+
+
+
+  const toggleBtn =
+    document.getElementById('toggleConfirm');
+
+  const confirmInput =
+    document.getElementById('confirmPassword');
+
+  toggleBtn.addEventListener('click', () => {
+
+    const isHidden =
+      confirmInput.type === 'password';
+
+    confirmInput.type =
+      isHidden ? 'text' : 'password';
+
+    toggleBtn.setAttribute(
+      'aria-label',
+      isHidden
+        ? 'Hide password'
+        : 'Show password'
+    );
+
+  });
+
+</script>
+
+</body>
+</html>
+```
