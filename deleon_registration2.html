@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Sun Son Solar</title>
+<style>
+ :root{
+   --yellow: #F0C24B;
+   --paper: #FFFDF7;
+   --ink: #4A4030;
+   --muted: #9A8F70;
+   --line: #E9DFC0;
+ } 
+
+ * { box-sizing: border-box; }
+ body{
+   margin:0;
+   min-height:100vh;
+   background: #FBF3D8;
+   font-family: Arial, sans-serif;
+   color: var(--ink);
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   padding: 40px 20px;
+ }
+
+ .card{
+   width: 100%;
+   max-width: 380px;
+   background: var(--paper);
+   border-radius: 12px;
+   padding: 30px;
+ }
+
+ h1{
+   font-size: 22px;
+   font-weight: 700;
+   margin: 0 0 4px;
+   text-align:center;
+ }
+
+ .subtitle{
+   text-align:center;
+   font-size: 13px;
+   color: var(--muted);
+   margin: 0 0 24px;
+ }
+
+ form{ display:flex; flex-direction:column; gap: 12px; }
+ input[type="text"],
+ input[type="email"],
+ input[type="tel"],
+ input[type="password"]{
+   width: 100%;
+   padding: 12px 14px;
+   border: 1px solid var(--line);
+   border-radius: 8px;
+   font-size: 14px;
+   color: var(--ink);
+   outline: none;
+ }
+
+ input:focus{
+   border-color: var(--yellow);
+ }
+
+ .checks{
+   display:flex;
+   flex-direction:column;
+   gap: 8px;
+   margin: 12px 2px 20px;
+   font-size: 13px;
+   color: var(--muted);
+ }
+
+ .check{
+   display:flex;
+   align-items:center;
+   gap: 8px;
+ }
+ 
+ .check a{
+   color: var(--ink);
+   font-weight: 600;
+ }
+
+ .submit{
+   width: 100%;
+   padding: 13px;
+   border: none;
+   border-radius: 8px;
+   background: var(--yellow);
+   color: var(--ink);
+   font-weight: 700;
+   font-size: 14px;
+   cursor: pointer;
+ }
+
+ .footer-link{
+   text-align:center;
+   font-size: 13px;
+   color: var(--muted);
+   margin-top: 16px;
+ }
+
+ .footer-link a{
+   color: var(--ink);
+   font-weight: 600;
+ }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Create an Account</h1>
+
+<p class="subtitle">Join The Sun Son Solar Family! Hi Sir, wag ka na mastress :<< bigyan po ulit kita cookies :< </p>
+
+<form>
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email" required>
+
+<input type="tel" placeholder="Phone Number" required>
+
+<input type="password" placeholder="Password" required>
+
+<input type="password" placeholder="Confirm Password" required>
+
+<div class="checks">
+
+<label class="check">
+
+<input type="checkbox" required>
+
+       I agree to <a href="#">Terms &amp; Conditions</a>
+</label>
+
+<label class="check">
+<input type="checkbox">
+       Newsletter
+</label>
+</div>
+
+<button type="submit" class="submit">Sign Up</button>
+</form>
+
+<p class="footer-link">Already have an account? <a href="#">Log In</a></p>
+</div>
+</body>
+</html>
